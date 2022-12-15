@@ -25,11 +25,11 @@ public class CandidatoServico {
         Map<Integer, Estado> qtdCandidatosPorEstados = qtdCandidatosPorEstados(candidatos);
 //  • IMC médio em cada faixa de idade de dez em dez anos: 0 a 10; 11 a 20; 21 a 30, etc. (IMC = peso / altura^2)
         float imc = 0;
-      for (int i = 0; i <= candidatos.size(); i++) {
-          int anoNascimento = LocalDate.parse(candidatos.get(i).getData_nasc()).getYear();
+      for (int index = 0; index <= candidatos.size(); index++) {
+          int anoNascimento = LocalDate.parse(candidatos.get(index).getData_nasc()).getYear();
           int anoAtual = LocalDate.now().getYear();
           int idade = anoNascimento - anoAtual;
-          Map<Integer, Float> calcularIMC = calcularIMC(candidatos, i, idade);
+          Map<Integer, Float> calcularIMC = calcularIMC(candidatos, index, idade);
 
 //  • Qual o percentual de obesos entre os homens e entre as mulheres? (É obeso quem tem IMC >30)
           int qtdMasculino = 0, qtdFeminino = 0;
@@ -37,10 +37,10 @@ public class CandidatoServico {
 
           for (int a = 0; a <= calcularIMC.values().size(); a++) {
               if (calcularIMC.get(a).floatValue() > 30) {
-                  if (candidatos.get(i).getSexo().equals("Feminino")) {
+                  if (candidatos.get(index).getSexo().equals("Feminino")) {
                         qtdFeminino++;
                   }
-                  if (candidatos.get(i).getSexo().equals("Masculino")) {
+                  if (candidatos.get(index).getSexo().equals("Masculino")) {
                         qtdMasculino++;
                   }
               }
