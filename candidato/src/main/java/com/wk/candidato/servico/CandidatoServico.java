@@ -2,6 +2,7 @@ package com.wk.candidato.servico;
 
 import com.wk.candidato.dto.CandidatoDTO;
 import com.wk.candidato.enums.Estado;
+import com.wk.candidato.enums.TipoSanguineo;
 import com.wk.candidato.repository.CandidatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,15 +48,91 @@ public class CandidatoServico {
           }
           percentualFeminino = qtdFeminino / 100;
           percentualMasculino = qtdMasculino / 100;
-      }
 
 //  • Qual a média de idade para cada tipo sanguíneo?
+          if ( idade > 0 && idade <= 10 ) {
 
+          }
+
+          if ( idade > 10 && idade <= 20) {
+
+          }
+
+          if( idade > 20 && idade <= 30) {
+
+          }
+
+          if( idade > 30 && idade <= 40) {
+
+          }
+
+          if( idade > 40 && idade <= 50) {
+
+          }
+
+          if( idade > 50 && idade <= 60) {
+
+          }
+
+          if( idade > 60 && idade <= 70) {
+
+          }
+
+          if( idade > 70 && idade <= 80) {
+
+          }
+
+          if( idade > 80 && idade <= 90) {
+
+          }
+
+          if( idade > 90 && idade <= 100) {
+
+          }
+
+          if( idade > 100 && idade <= 120) {
+
+          }
+
+          somatorioTipoSanguineo(candidatos, index);
 //  • A quantidade de possíveis doadores para cada tipo sanguíneo receptor.
 
 //    ATENÇÃO: Somente pessoas com idade de 16 a 69 anos e com peso acima de 50 Kg podem doar sangue.
 
+      }
+
         return null;
+    }
+
+    private static void somatorioTipoSanguineo(List<CandidatoDTO> candidatos, int index) {
+        int somaAPositivo = 0, somaANegativo = 0, somaBPositivo = 0, somaBNegativo = 0,
+                somaABPositivo = 0, somaABNegativo = 0, somaOPositivo = 0, somaONegativo = 0;
+        switch(TipoSanguineo.valueOf(candidatos.get(index).getTipo_sanguineo())) {
+            case A_POSITIVO:
+                somaAPositivo++;
+                break;
+            case A_NEGATIVO:
+                somaANegativo++;
+                break;
+            case B_POSITIVO:
+                somaBPositivo++;
+                break;
+            case B_NEGATIVO:
+                somaBNegativo++;
+                break;
+            case AB_POSITIVO:
+                somaABPositivo++;
+                break;
+            case AB_NEGATIVO:
+                somaABNegativo++;
+                break;
+            case O_POSITIVO:
+                somaOPositivo++;
+                break;
+            case O_NEGATIVO:
+                somaONegativo++;
+                break;
+        }
     }
 
     private static Map<Integer, Float> calcularIMC(List<CandidatoDTO> candidatos, int index, int idade) {
